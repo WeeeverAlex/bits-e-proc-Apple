@@ -5,12 +5,17 @@ Nome-Grupo: "Apple"
   git-username: WeeverAlex
   blackboard-username: alexandrew1
   email-insper: alexandrew1@al.insper.edu.br
-
-
-
+  
 - user: 4
   name: Enzo Quental
   git-username: Enzoq2202
   blackboard-username: enzoq
   email-insper: enzoq@al.insper.edu.br
+  
+- user: 5
+  name: Sergio Eduardo Ramella Junior 
+  git-username: st4pzz
+  blackboard-username: sergioerj
+  email-insper: sergioerj@al.insper.edu.br
+
   
