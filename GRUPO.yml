@@ -6,6 +6,12 @@ Nome-Grupo: "Apple"
   blackboard-username: alexandrew1
   email-insper: alexandrew1@al.insper.edu.br
   
+- user: 2
+  name: Tomas Alessi
+  git-username: alessi.tomas
+  blackboard-username: tomasa
+  email-insper: tomasa@al.insper.edu.br
+
 - user: 4
   name: Enzo Quental
   git-username: Enzoq2202
@@ -17,5 +23,3 @@ Nome-Grupo: "Apple"
   git-username: st4pzz
   blackboard-username: sergioerj
   email-insper: sergioerj@al.insper.edu.br
-
-  
