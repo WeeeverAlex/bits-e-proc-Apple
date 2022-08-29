@@ -11,6 +11,12 @@ Nome-Grupo: "Apple"
   git-username: alessi.tomas
   blackboard-username: tomasa
   email-insper: tomasa@al.insper.edu.br
+  
+- user: 3
+   name: Leonardo Scarlato
+   git-username: leoscarlato
+   blackboard-username: leoscarlato_
+   email-insper: leonardos15@al.insper.edu.br
 
 - user: 4
   name: Enzo Quental
