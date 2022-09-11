@@ -150,7 +150,11 @@ def deMux2way(a, q0, q1, sel):
 
     @always_comb
     def comb():
-        q0.next = foo
+        lista  = 2 * [0]
+        lista[sel] = a
+        q0.next = lista[0]
+        q1.next = lista[1]
+        
 
     return comb
 
