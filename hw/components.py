@@ -167,7 +167,12 @@ def deMux4way(a, q0, q1, q2, q3, sel):
 
     @always_comb
     def comb():
-        q0.next = foo
+        lista = 4 * [0]
+        lista[sel] = a
+        q0.next = lista[0]
+        q1.next = lista[1]
+        q2.next = lista[2]
+        q3.next = lista[3]
 
     return comb
 
