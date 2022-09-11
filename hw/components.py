@@ -146,11 +146,15 @@ def deMux2way(a, q0, q1, sel):
     q1 = 0
     """
 
-    foo = Signal(intbv(0))
+    # foo = Signal(intbv(0))
 
     @always_comb
     def comb():
-        q0.next = foo
+        saida = [0,0]
+        saida[sel] = a
+        q0.next = saida[0]
+        q1.next = saida[1]
+        
 
     return comb
 
