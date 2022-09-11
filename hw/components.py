@@ -127,8 +127,10 @@ def mux8way(q, a, b, c, d, e, f, g, h, sel):
 
     @always_comb
     def comb():
+        sel = int(sel)
         entradas = [ a, b, c, d, e, f, g, h ]
-        q.next = entradas[sel]
+        resp = entradas[sel]
+        q.next = resp
 
     return comb
 
