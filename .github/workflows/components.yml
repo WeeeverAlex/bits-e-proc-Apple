@@ -27,7 +27,41 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ------------- Tests ----------------
-      - name: test deMux2way
+      # ------------- Tests ----------------     
+      - name: test and16
+        run: |    
+          pytest hw/test_components.py -k and16
+          
+      - name: test or8way
+        run: |
+          pytest hw/test_components.py -k or8way
+          
+      - name: test orNway
+        run: |
+          pytest hw/test_components.py -k orNway
+          
+      - name: test mux2way
+        run: |
+          pytest hw/test_components.py -k test_mux2way
+
+      - name: test deMux4way
+        run: |
+          pytest hw/test_components.py -k test_deMux4way
+          
+      - name: test deMux8way
+        run: |
+          pytest hw/test_components.py -k test_deMux8way
+          
+      - name: test mux4way
+        run: |
+          pytest hw/test_components.py -k test_mux4way
+          
+      - name: test barrelShifter
+        run: |
+          pytest hw/test_components.py -k barrelShifter
+          
+        - name: test deMux2way
         run: 
-          pytest hw/test_components.py -k deMux2way
+          pytest hw/test_components.py -k deMux2way   
+
+
