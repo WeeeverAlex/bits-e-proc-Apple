@@ -2,13 +2,15 @@
 Trabalho da aula no Insper de Bits e Processadores do Grupo Apple.
 
 --------------------------------
-SCRUM MASTER - Alexandre Wever
+GRUPO:
 <br>
-DESENVOLVEDOR - Enzo Quental
+Alexandre Wever
 <br>
-DESENVOLVEDOR - Leornardo Scarlatto
+Enzo Quental
 <br>
-DESENVOLVEDOR - Tomás Alessi
+DLeornardo Scarlatto
 <br>
-DESENVOLVEDOR - Sérgio Ramella
+Tomás Alessi
+<br>
+Sérgio Ramella
 --------------------------------
