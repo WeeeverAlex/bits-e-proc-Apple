@@ -27,7 +27,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ------------- Tests ----------------
+      # ------------- Tests ----------------     
+      - name: test and16
+        run: |    
+          pytest hw/test_components.py -k and16
+          
+      - name: test or8way
+        run: |
+          pytest hw/test_components.py -k or8way
+          
+      - name: test orNway
+        run: |
+          pytest hw/test_components.py -k orNway
+          
       - name: test mux8way
         run: |
           pytest hw/test_components.py -k test_mux8way
+
