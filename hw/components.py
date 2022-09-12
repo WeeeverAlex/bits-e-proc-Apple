@@ -16,11 +16,12 @@ def and16(a, b, q):
 
     @always_comb
     def comb():
-        q.next = foo
+        q.next = a and b 
 
     return comb
 
 
+# --------------------- função or8way ------------------#
 @block
 def or8way(a, b, c, d, e, f, g, h, q):
     """
@@ -32,9 +33,11 @@ def or8way(a, b, c, d, e, f, g, h, q):
 
     @always_comb
     def comb():
-        q.next = foo
+        q.next = a or b or c or d or e or f or g or h
 
     return comb
+
+# -----------------------------------------------------#
 
 
 @block
@@ -49,7 +52,7 @@ def orNway(a, q):
 
     @always_comb
     def comb():
-        q.next = foo
+        q.next =  a[0] or a[1] or a[2] or a[3] or a[4] or a[5] or a[6] or a[7] or a[8] or a[9] or a[10] or a[11] or a[12] or a[13] or a[14] or a[15]
 
     return comb
 
@@ -91,8 +94,10 @@ def mux2way(q, a, b, sel):
 
     @always_comb
     def comb():
-        q.next = foo
-
+        if sel == 0:
+            q.next = a
+        elif sel == 1:
+            q.next = b
     return comb
 
 
@@ -127,8 +132,11 @@ def mux8way(q, a, b, c, d, e, f, g, h, sel):
 
     @always_comb
     def comb():
+        indice = int(sel)
+        entradas = [ a, b, c, d, e, f, g, h ]
+        resp = entradas[indice]
+        q.next = resp
         q.next = foo
-
     return comb
 
 
@@ -150,7 +158,8 @@ def deMux2way(a, q0, q1, sel):
 
     @always_comb
     def comb():
-        q0.next = foo
+        entradas  = [a,b]
+        q.next = entradas[sel]
 
     return comb
 
@@ -190,7 +199,6 @@ def deMux8way(a, q0, q1, q2, q3, q4, q5, q6, q7, sel):
     @always_comb
     def comb():
         q0.next = foo
-
     return comb
 
 
