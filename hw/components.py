@@ -2,7 +2,6 @@
 
 from myhdl import *
 
-
 @block
 def and16(a, b, q):
     """
@@ -343,7 +342,6 @@ def bin2bcd(b, bcd1, bcd0):
         bcd0.next = b2
         
     return comb
-
 
 # -----------------------------#
 # Conceito A
