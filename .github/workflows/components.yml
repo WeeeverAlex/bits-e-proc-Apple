@@ -50,5 +50,10 @@ jobs:
           
       - name: test deMux8way
         run: |
-          pytest hw/test_components.py -k test_deMux8way    
+          pytest hw/test_components.py -k test_deMux8way
+          
+      - name: test mux4way
+        run: |
+          pytest hw/test_components.py -k test_mux4way    
+
 
