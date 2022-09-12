@@ -16,11 +16,12 @@ def and16(a, b, q):
 
     @always_comb
     def comb():
-        q.next = foo
+        q.next = a and b 
 
     return comb
 
 
+# --------------------- função or8way ------------------#
 @block
 def or8way(a, b, c, d, e, f, g, h, q):
     """
@@ -32,9 +33,11 @@ def or8way(a, b, c, d, e, f, g, h, q):
 
     @always_comb
     def comb():
-        q.next = foo
+        q.next = a or b or c or d or e or f or g or h
 
     return comb
+
+# -----------------------------------------------------#
 
 
 @block
@@ -92,8 +95,7 @@ def mux2way(q, a, b, sel):
     @always_comb
     def comb():
         q.next = foo
-
-    return comb
+        return comb
 
 
 @block
@@ -128,7 +130,6 @@ def mux8way(q, a, b, c, d, e, f, g, h, sel):
     @always_comb
     def comb():
         q.next = foo
-
     return comb
 
 
@@ -185,7 +186,6 @@ def deMux8way(a, q0, q1, q2, q3, q4, q5, q6, q7, sel):
     @always_comb
     def comb():
         q0.next = foo
-
     return comb
 
 

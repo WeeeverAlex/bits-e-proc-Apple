@@ -28,6 +28,14 @@ jobs:
           pip install -r requirements.txt
 
       # ------------- Tests ----------------
+      - name: test and16
+        run: |
+          pytest hw/test_components.py -k and16
+          
+      - name: test or8way
+        run: |
+          pytest hw/test_components.py -k or8way
+          
       - name: test orNway
         run: |
           pytest hw/test_components.py -k orNway
