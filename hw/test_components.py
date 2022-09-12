@@ -204,15 +204,18 @@ def test_deMux8way():
 
 
 def test_bin2bcd():
+    b = Signal(intbv(0)[9:])
     bc0 = Signal(intbv(0)[4:])
     bc1 = Signal(intbv(0)[4:])
-    b = Signal(intbv(0)[9:])
 
     ic1 = bin2bcd(b, bc1, bc0)
 
     @instance
     def stimulus():
-        yield delay(1)
+        for i in range(32):
+            bc0.next, bc1.next = [randrange(16) for i in range(2)]
+            yield delay(1)
+            assert b == bc0[:4] + bc1[:4]
 
     sim = Simulation(ic1, stimulus)
     sim.run()
