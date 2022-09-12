@@ -35,5 +35,7 @@ jobs:
       - name: test or8way
         run: |
           pytest hw/test_components.py -k or8way
-
-
+          
+      - name: test orNway
+        run: |
+          pytest hw/test_components.py -k orNway
