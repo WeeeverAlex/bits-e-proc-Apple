@@ -147,7 +147,6 @@ def mux8way(q, a, b, c, d, e, f, g, h, sel):
         entradas = [ a, b, c, d, e, f, g, h ]
         resp = entradas[indice]
         q.next = resp
-        q.next = foo
     return comb
 
 
