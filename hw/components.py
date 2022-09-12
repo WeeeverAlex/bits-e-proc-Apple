@@ -198,7 +198,85 @@ def deMux8way(a, q0, q1, q2, q3, q4, q5, q6, q7, sel):
 
     @always_comb
     def comb():
-        q0.next = foo
+        if sel == 0:
+            q0.next = a
+            q1.next = 0
+            q2.next = 0
+            q3.next = 0
+            q4.next = 0
+            q5.next = 0
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 1:
+            q0.next = 0
+            q1.next = a
+            q2.next = 0
+            q3.next = 0
+            q4.next = 0
+            q5.next = 0
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 2:
+            q0.next = 0
+            q1.next = 0
+            q2.next = a
+            q3.next = 0
+            q4.next = 0
+            q5.next = 0
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 3:
+            q0.next = 0
+            q1.next = 0
+            q2.next = 0
+            q3.next = a
+            q4.next = 0
+            q5.next = 0
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 4:
+            q0.next = 0
+            q1.next = 0
+            q2.next = 0
+            q3.next = 0
+            q4.next = a
+            q5.next = 0
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 5:
+            q0.next = 0
+            q1.next = 0
+            q2.next = 0
+            q3.next = 0
+            q4.next = 0
+            q5.next = a
+            q6.next = 0
+            q7.next = 0
+
+        elif sel == 6:
+            q0.next = 0
+            q1.next = 0
+            q2.next = 0
+            q3.next = 0
+            q4.next = 0
+            q5.next = 0
+            q6.next = a
+            q7.next = 0
+
+        else:
+            q0.next = 0
+            q1.next = 0
+            q2.next = 0
+            q3.next = 0
+            q4.next = 0
+            q5.next = 0
+            q6.next = 0
+            q7.next = a
     return comb
 
 
