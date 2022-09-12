@@ -26,7 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       # ------------- Tests ----------------     
       - name: test and16
         run: |    
@@ -63,6 +63,10 @@ jobs:
       - name: test deMux2way
         run: 
           pytest hw/test_components.py -k deMux2way
+          
+      - name: test bin2bcd
+        run: |
+          pytest hw/test_components.py -k bin2bcd    
           
       - name: test bin2bcd
         run: |

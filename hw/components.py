@@ -337,13 +337,12 @@ def bin2bcd(b, bcd1, bcd0):
         b2 = 0
 
         for i in range(4):
-            b1+= num1[3-i]*(2**i)
-            b2 += num2[3-i]*(2**i)
+            b1+= int(num1[3-i])*(2**i)
+            b2 += int(num2[3-i])*(2**i)
 
-        bcd0.next = b1
-        bcd1.next = b2
-
-
+        bcd1.next = b1
+        bcd0.next = b2
+        
     return comb
 
 
