@@ -201,7 +201,14 @@ def bin2hex(hex0, sw):
 
     @always_comb
     def comb():
-        hex0.next[4:] = sw[4:]
+        hex = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
+        b1 = 0
+
+        for i in range(4):
+            b1+= int(sw[3-i])*(2**i)
+
+   
+        hex0.next[4:] = hex[b1]
 
     return comb
 
