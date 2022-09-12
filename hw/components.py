@@ -217,24 +217,23 @@ def bin2bcd(b, bcd1, bcd0):
     BCD1 = 8
     BCD0 = 2
     """
-
+    # Corsi erro novamente aqui BCD1 == 5
     foo = Signal(intbv(0)[4:])
 
     @always_comb
     def comb():
 
         num1 = b[:4]
-        num1 = b[4:]
+        num2 = b[4:]
         b1 = 0
         b2 = 0
 
         for i in range(4):
-            b1+= num1[i]*(2**i)
-            b2 += num1[i]*(2**i)
+            b1+= num1[3-i]*(2**i)
+            b2 += num2[3-i]*(2**i)
 
-
-        bcd1.next = b1
-        bcd0.next = b2
+        bcd0.next = b1
+        bcd1.next = b2
 
     return comb
 
