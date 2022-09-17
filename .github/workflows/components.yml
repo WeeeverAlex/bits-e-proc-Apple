@@ -60,10 +60,6 @@ jobs:
         run: |
           pytest hw/test_components.py -k barrelShifter
           
-      - name: test deMux2way
-        run: 
-          pytest hw/test_ula.py -k deMux2way
-          
       - name: test zerador
         run: 
           pytest hw/test_ula.py -k zerador
