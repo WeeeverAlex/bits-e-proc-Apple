@@ -29,3 +29,7 @@ Nome-Grupo: "Apple"
   git-username: st4pzz
   blackboard-username: sergioerj
   email-insper: sergioerj@al.insper.edu.br
+
+- name: test or8way
+run: |
+  pytest hw/test_components.py -k or8way
