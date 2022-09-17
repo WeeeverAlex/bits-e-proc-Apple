@@ -74,4 +74,4 @@ jobs:
 
       - name: test add
         run: |
-          pytest hw/test_components.py -k add
+          pytest hw/test_ula.py -k add
