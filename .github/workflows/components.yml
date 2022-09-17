@@ -70,5 +70,9 @@ jobs:
           
       - name: test bin2bcd
         run: |
-          pytest hw/test_components.py -k bin2bcd    
+          pytest hw/test_components.py -k bin2bcd 
+
+      - name: test comparador
+        run: |
+          pytest hw/test_components.py -k comparador   
 
