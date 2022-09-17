@@ -74,3 +74,7 @@ jobs:
       - name: test inversor
         run: |
           pytest hw/test_ula.py -k inversor
+
+      - name: test comparador
+        run: |
+          pytest hw/test_ula.py -k comparador
