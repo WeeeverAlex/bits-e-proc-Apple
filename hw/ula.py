@@ -74,7 +74,7 @@ def add(a, b, q):
 def inc(a, q):
     @always_comb
     def comb():
-        pass
+        add(a, 1, q)
 
     return instances()
 
