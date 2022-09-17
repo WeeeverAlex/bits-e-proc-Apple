@@ -84,7 +84,8 @@ def add(a, b, q):
 def inc(a, q):
     @always_comb
     def comb():
-        add(a, 1, q)
+        #add(a, 1, q)
+        q.next = a + 1
 
     return instances()
 
