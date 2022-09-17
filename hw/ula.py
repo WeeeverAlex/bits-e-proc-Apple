@@ -58,7 +58,10 @@ def comparador(a, zr, ng, width):
 def zerador(z, a, y):
     @always_comb
     def comb():
-        pass
+        if z == 0:
+            a.next = y
+        else:
+            a.next = 0
 
     return instances()
 
