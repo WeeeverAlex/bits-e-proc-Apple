@@ -72,3 +72,6 @@ jobs:
         run: |
           pytest hw/test_components.py -k bin2bcd    
 
+      - name: test add
+        run: |
+          pytest hw/test_components.py -k add
