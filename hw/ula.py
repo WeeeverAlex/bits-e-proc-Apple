@@ -40,7 +40,6 @@ def inversor(z, a, y):
         if z == 0:
             a.next = y
         else:
-            # ~n = -n - 1
             a.next = ~y
 
     return instances()
