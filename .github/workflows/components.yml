@@ -83,8 +83,12 @@ jobs:
       - name: test comparador
         run: |
           pytest hw/test_ula.py -k comparador
-      
+          
       - name: test inc
         run: |
           pytest hw/test_ula.py -k inc
+      
+      - name: test zerador
+        run: |
+          pytest hw/test_ula.py -k zerador
 
