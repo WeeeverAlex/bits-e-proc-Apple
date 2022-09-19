@@ -139,7 +139,7 @@ def addcla4(a, b, q):
 def addcla16(a, b, q):
     @always_comb
     def comb():
-        pass
+        q = a + b
 
     return instances()
 
