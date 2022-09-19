@@ -3,19 +3,57 @@
 #!/usr/bin/env python3
 
 from myhdl import *
+@block
+def mux2way(q, a, b, sel):
+    """
+    q: 16 bits
+    a: 16 bits
+    b: 16 bits
+    sel: 2 bits
 
+    Mux entre a e b, sel é o seletor
+    """
+    foo = Signal(intbv(0))
+
+    @always_comb
+    def comb():
+        if sel == 0:
+            q.next = a
+        elif sel == 1:
+            q.next = b
+    return comb
+
+@block
+def and16(a, b, q):
+    """
+    a: 16 bits
+    b: 16 bits
+    q: 16 bits
+
+    and bit a bit entre a e b
+    """
+    foo = Signal(0)
+
+    @always_comb
+    def comb():
+        print(a)
+        print(b)
+        q.next = a and b 
+
+    return comb
 
 @block
 def ula(x, y, c, zr, ng, saida, width=16):
+    
 
-    zx_out = Signal(intbv(0)[width:])
-    nx_out = Signal(intbv(0)[width:])
-    zy_out = Signal(intbv(0)[width:])
-    ny_out = Signal(intbv(0)[width:])
-    and_out = Signal(intbv(0)[width:])
-    add_out = Signal(intbv(0)[width:])
-    mux_out = Signal(intbv(0)[width:])
-    no_out = Signal(intbv(0)[width:])
+    zx_out = Signal(modbv(0)[width:])
+    nx_out = Signal(modbv(0)[width:])
+    zy_out = Signal(modbv(0)[width:])
+    ny_out = Signal(modbv(0)[width:])
+    and_out = Signal(modbv(0)[width:])
+    add_out = Signal(modbv(0)[width:])
+    mux_out = Signal(modbv(0)[width:])
+    no_out = Signal(modbv(0)[width:])
 
     c_zx = c(5)
     c_nx = c(4)
@@ -23,12 +61,26 @@ def ula(x, y, c, zr, ng, saida, width=16):
     c_ny = c(2)
     c_f = c(1)
     c_no = c(0)
+    
+    z1 = zerador(c_zx,zx_out,x)
+    i1 =inversor(c_nx,zx_out, nx_out)
+    z2 =zerador(c_zy,zy_out,y)
+    i2 =inversor(c_ny,zy_out, ny_out)
+    #and1 =and16(nx_out,ny_out,and_out)
+    add1 =add(nx_out,ny_out, add_out)
+    mux =mux2way(mux_out,and_out,add_out,c_f)
+    i_final =inversor(c_no, mux_out,no_out)
+    c1 =comparador(no_out,zr,ng,16)
+
 
     @always_comb
     def comb():
-        pass
+
+        saida.next = no_out
+        
 
     return instances()
+
 
 
 # -z faz complemento de dois
@@ -51,11 +103,16 @@ def comparador(a, zr, ng, width):
     # width insica o tamanho do vetor a
     @always_comb
     def comb():
-        if a  == 0:
+        if a == 0:
             zr.next = 1
         else:
             zr.next = 0
 
+        if a[width-1]:
+            ng.next = 1
+        else:
+            ng.next = 0
+        
     return instances()
 
 
