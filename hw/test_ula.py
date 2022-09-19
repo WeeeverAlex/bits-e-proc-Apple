@@ -166,3 +166,22 @@ def test_add():
 
     sim = Simulation(add16_1, stimulus)
     sim.run()
+
+def test_addcla4():
+    a = Signal(intbv(0))
+    b = Signal(intbv(0))
+    q = Signal(intbv(0))
+
+    addcla4_1 = addcla4(a, b, q)
+
+    @instance
+    def stimulus():
+        for i in range(256):
+            a.next, b.next = [randrange(2**4 - 1) for i in range(2)]
+            yield delay(1)
+            assert q == a + b
+
+    sim = Simulation(addcla4_1, stimulus)
+    sim.run()
+
+    
