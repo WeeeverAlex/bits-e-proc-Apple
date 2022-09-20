@@ -72,6 +72,10 @@ jobs:
         run: |
           pytest hw/test_components.py -k bin2bcd    
 
+      - name: test inc
+      run: |
+          pytest hw/test_ula.py -k test_ula
+          
       - name: test zerador
         run: |
           pytest hw/test_ula.py -k zerador
