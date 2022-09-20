@@ -176,12 +176,15 @@ def test_addcla4():
 
     @instance
     def stimulus():
-        for i in range(256):
-            a.next, b.next = [randrange(2**4 - 1) for i in range(2)]
+        for i in range(16):
+            a.next, b.next = [randrange(2**3 - 1) for i in range(2)]
             yield delay(1)
             assert q == a + b
 
     sim = Simulation(addcla4_1, stimulus)
     sim.run()
+
+
+
 
     
