@@ -175,14 +175,14 @@ def test_addcla4():
    addcla4_1 = addcla4(a, b, q)
    
    @instance
-    def stimulus():
+   def stimulus():
         for i in range(16):
             a.next, b.next = [randrange(2**3 - 1) for i in range(2)]
             yield delay(1)
             assert q == a + b
 
-    sim = Simulation(addcla4_1, stimulus)
-    sim.run()
+   sim = Simulation(addcla4_1, stimulus)
+   sim.run()
 
 def test_addcla16():
     a = Signal(intbv(0))

@@ -13,13 +13,12 @@ def mux2way(q, a, b, sel):
 
     Mux entre a e b, sel é o seletor
     """
-    foo = Signal(intbv(0))
 
     @always_comb
     def comb():
         if sel == 0:
             q.next = a
-        elif sel == 1:
+        else:
             q.next = b
     return comb
 
@@ -70,7 +69,7 @@ def ula(x, y, c, zr, ng, saida, width=16):
     add1 =add(nx_out,ny_out, add_out)
     mux =mux2way(mux_out,and_out,add_out,c_f)
     i_final =inversor(c_no, mux_out,no_out)
-    c1 =comparador(no_out,zr,ng,16)
+    c1 =comparador(no_out,zr,ng,width)
 
 
     @always_comb
@@ -108,7 +107,7 @@ def comparador(a, zr, ng, width):
         else:
             zr.next = 0
 
-        if a[width-1]:
+        if a[width-1] == 1:
             ng.next = 1
         else:
             ng.next = 0
