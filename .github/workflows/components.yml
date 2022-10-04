@@ -96,7 +96,3 @@ jobs:
         run: |
           pytest hw/test_ula.py -k zerador
 
-      - name: test binaryDigit
-        run: |
-          pytest hw/test_seq.py -k test_ram
-
