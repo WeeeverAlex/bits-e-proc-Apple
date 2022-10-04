@@ -98,4 +98,4 @@ jobs:
 
       - name: test binaryDigit
         run: |
-          pytest hw/test_ula.py -k binaryDigit
+          pytest hw/test_seq.py -k binaryDigit
