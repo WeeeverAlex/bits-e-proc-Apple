@@ -18,8 +18,6 @@ def ram(dout, din, addr, we, clk, rst, width, depth):
             loads[addr].next = 1
         else:
             loads[addr].next = 0
-        
-        dout.next = outputs[addr]
 
     return instances()
 
