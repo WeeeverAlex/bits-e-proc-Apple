@@ -14,10 +14,15 @@ def ram(dout, din, addr, we, clk, rst, width, depth):
 
     @always_comb
     def comb():
+        
+        # we = 1 -> grava o vetor de bits no endereço addr
+        # we = 0 -> apenas lê o que já foi salvo no endereço addr
+
         if we:
-            loads[addr].next = 1
+                loads[addr].next = 1
         else:
-            loads[addr].next = 0
+                loads[addr].next = 0
+        
 
     return instances()
 
