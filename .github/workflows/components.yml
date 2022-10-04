@@ -96,3 +96,7 @@ jobs:
         run: |
           pytest hw/test_ula.py -k zerador
 
+      - name: test ram
+        run: |
+          pytest hw/test_ula.py -k ram
+
