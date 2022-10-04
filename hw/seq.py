@@ -57,6 +57,7 @@ def register8(i, load, output, clk, rst):
 def binaryDigit(i, load, output, clk, rst):
     q, d, clear, presset = [Signal(bool(0)) for i in range(4)]
 
+    dff_ = dff(q, d, clear, presset, clk, rst)
     @always_comb
     def comb():
         
