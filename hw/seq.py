@@ -61,18 +61,7 @@ def binaryDigit(i, load, output, clk, rst):
     
     @always_comb
     def comb():
-        
-        if load:
-            output.next = i
-            
-        else:
-            if clear:
-                output.next = 0
-            elif presset:
-                output.next = 1
-            else:
-                output.next = q
-
+        output.next = q
     
     return instances()
 
