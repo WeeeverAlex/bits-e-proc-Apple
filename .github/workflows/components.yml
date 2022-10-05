@@ -96,6 +96,10 @@ jobs:
         run: |
           pytest hw/test_ula.py -k zerador
 
+      - name: test registerN
+        run: |
+          pytest hw/test_seq.py -k registerN
+
       - name: test register8
         run: |
           pytest hw/test_seq.py -k register8
@@ -103,8 +107,9 @@ jobs:
       - name: test binaryDigit
         run: |
           pytest hw/test_seq.py -k binaryDigit
-
+          
       - name: test dff
         run: |
           pytest hw/test_seq.py -k add
+
 
