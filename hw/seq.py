@@ -10,9 +10,20 @@ def ram(dout, din, addr, we, clk, rst, width, depth):
     outputs = [Signal(modbv(0)[width:]) for i in range(depth)]
     registersList = [None for i in range(depth)]
 
+    for i in range(len(loads)):
+        registersList[i] = registerN(din, loads[i], outputs[i], width, clk, rst)
+
     @always_comb
     def comb():
-        pass
+        
+        # we = 1 -> grava o vetor de bits no endereço addr
+        # we = 0 -> apenas lê o que já foi salvo no endereço addr
+
+        if we:
+                loads[addr].next = 1
+        else:
+                loads[addr].next = 0
+        
 
     return instances()
 
