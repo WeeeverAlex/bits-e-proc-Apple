@@ -2,6 +2,7 @@
 
 from myhdl import *
 from .components import *
+from .ula import inc
 
 @block
 def ram(dout, din, addr, we, clk, rst, width, depth):
