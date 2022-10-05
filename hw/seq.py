@@ -2,6 +2,7 @@
 
 from myhdl import *
 from .components import *
+from .ula import inc
 
 @block
 def ram(dout, din, addr, we, clk, rst, width, depth):
@@ -18,14 +19,28 @@ def ram(dout, din, addr, we, clk, rst, width, depth):
 
 @block
 def pc(increment, load, i, output, width, clk, rst):
-    regIn = Signal(modbv(0)[width:])
-    regOut = Signal(modbv(0)[width:])
-    regLoad = Signal(bool(0))
-    
+
+    mux1saida,mux2saida,inc_saida = [Signal(modbv(0)[width:]) for j in range(0,3,1)]
+
+    register_entrada = Signal(modbv(0)[width:])
+    register_saida = Signal(modbv(0)[width:])
+    register_load = Signal(bool(0))
+
+
+    register = registerN(register_entrada, register_load, register_saida, width, clk, rst)
+
+    incre = inc(register_saida,inc_saida)
+
+
+    caminho_mux1 = mux2way(mux1saida,0,inc_saida,increment)
+    caminho_mux2 = mux2way(mux2saida,mux1saida,i,load)
+    caminho_mux3 = mux2way(register_entrada,mux2saida,0,rst)
 
     @always_comb
     def comb():
-        pass
+
+        register_load.next = rst or increment or load
+        output.next = register_saida
 
     return instances()
 
