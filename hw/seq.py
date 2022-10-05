@@ -21,6 +21,7 @@ def pc(increment, load, i, output, width, clk, rst):
     regIn = Signal(modbv(0)[width:])
     regOut = Signal(modbv(0)[width:])
     regLoad = Signal(bool(0))
+    
 
     @always_comb
     def comb():
