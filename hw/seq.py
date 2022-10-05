@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from myhdl import *
-
+from .components import *
 
 @block
 def ram(dout, din, addr, we, clk, rst, width, depth):
@@ -21,6 +21,7 @@ def pc(increment, load, i, output, width, clk, rst):
     regIn = Signal(modbv(0)[width:])
     regOut = Signal(modbv(0)[width:])
     regLoad = Signal(bool(0))
+    
 
     @always_comb
     def comb():
@@ -50,9 +51,13 @@ def register8(i, load, output, clk, rst):
     binaryDigitList = [None for n in range(8)]
     output_n = [Signal(bool(0)) for n in range(8)]
 
+    for a in range(len(binaryDigitList)):
+        binaryDigitList[a] = binaryDigit(i(a), load, output_n[a], clk, rst)
+
     @always_comb
     def comb():
-        pass
+        for b in range(len(output_n)):
+            output.next[b] = output_n[b]
 
     return instances()
 
@@ -60,11 +65,13 @@ def register8(i, load, output, clk, rst):
 @block
 def binaryDigit(i, load, output, clk, rst):
     q, d, clear, presset = [Signal(bool(0)) for i in range(4)]
-
+    dff_ = dff(q, d, clear, presset, clk, rst)
+    mux = mux2way(d, q, i, load)
+    
     @always_comb
     def comb():
-        pass
-
+        output.next = q
+    
     return instances()
 
 
