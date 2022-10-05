@@ -99,7 +99,7 @@ def mux2way(q, a, b, sel):
     def comb():
         if sel == 0:
             q.next = a
-        elif sel == 1:
+        else:
             q.next = b
     return comb
 
