@@ -95,4 +95,6 @@ jobs:
       - name: test zerador
         run: |
           pytest hw/test_ula.py -k zerador
-
+      - name: test dff
+        run: |
+          pytest hw/seq.py -k add
