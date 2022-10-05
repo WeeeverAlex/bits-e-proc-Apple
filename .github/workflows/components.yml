@@ -96,6 +96,10 @@ jobs:
         run: |
           pytest hw/test_ula.py -k zerador
 
+      - name: test register8
+        run: |
+          pytest hw/test_seq.py -k register8
+
       - name: test binaryDigit
         run: |
           pytest hw/test_seq.py -k binaryDigit
