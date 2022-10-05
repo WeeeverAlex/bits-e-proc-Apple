@@ -95,6 +95,12 @@ jobs:
       - name: test zerador
         run: |
           pytest hw/test_ula.py -k zerador
+
+      - name: test binaryDigit
+        run: |
+          pytest hw/test_seq.py -k binaryDigit
+
       - name: test dff
         run: |
           pytest hw/test_seq.py -k add
+
