@@ -13,67 +13,24 @@
 ; 1 -> 0
 
 
-Preparando:
-    leaw $0, %A
-    movw %A, %D
-    movw %D, (%A)
-
-leaw $496, %A
-movw %A, %D
-leaw $21184, %A
-movw %D, (%A)
+;COMEÇANDO PELO SW
 
 leaw $21185, %A
-movw (%A), %D
-leaw $2, %A
-andw %A, %D, %D
+movw (%A), %D           ;D = RAM[21185]
+notw %D                 ;D = !D -> !D = RAM[21185]
 
-leaw $SW1, %A
-jne
-nop
-
-leaw $2, %A
-movw %A, %D
-leaw $21184, %A
-addw (%A), %D, %D
-movw %D, (%A)
+leaw $14, %A            ;14 = selecionador
+andw %A, %D, %D         ;D = D & 14
 
 
 
-SW1:
-    leaw $21185, %A
-    movw (%A), %D
-    leaw $4, %A
-    andw %A, %D, %D
+;ON
 
-leaw $SW2, %A
-jne
-nop
-
-leaw $4, %A
-movw %A, %D
-leaw $21184, %A
-addw (%A), %D, %D
-movw %D, (%A)
+leaw $496, %A           ;496 = selecionador
+orw %A, %D, %D          ;D = D | 496
 
 
+;FINALIZANDO
 
-SW2:
-    leaw $21185, %A
-    movw (%A), %D
-    leaw $8, %A
-    andw %A, %D, %D
-
-leaw $END, %A
-jne
-nop
-
-leaw $8, %A
-movw %A, %D
-leaw $21184, %A
-addw (%A), %D, %D
-movw %D, (%A)
-
-
-
-END:
+leaw $21184, %A         ;RAM[21184] = led
+movw %D, (%A)           ;D = RAM[21184]
