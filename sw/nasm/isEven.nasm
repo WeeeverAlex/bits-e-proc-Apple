@@ -12,19 +12,24 @@ movw (%A), %D
 leaw $1, %A
 andw %A, %D, %D
 
+
 leaw $ELSE, %A
 je
 nop
 
+
 leaw $0, %A
 movw $0, (%A)
+
 
 leaw $END, %A
 jmp 
 nop
 
+
 ELSE:
-    leaw $0, %A
-    movw $1, (%A)
+leaw $0, %A
+movw $1, (%A)
+
 
 END:
