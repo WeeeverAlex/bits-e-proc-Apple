@@ -26,31 +26,15 @@
 ;  RAM[14] = `?`
 ;  RAM[15] = NULL = 0x0000
 
-
-
+leaw $7, %A
 WHILE:
-leaw $8, %A
+incw %A
+leaw %WHILE
+le
+nop
 movw %A, %D
-leaw $1, %A
-addw %D, (%A), %D
-movw %D, %A
-movw (%A), %D
-leaw $END
-je
-nop
-
-leaw $1, %A
-movw (%A), %D
-incw %D
-movw %D, (%A)
-
+leaw $7, %A
+subw %D - %A,%D
 leaw $0, %A
-movw (%A), %D
-incw %D
-movw %D, (%A)
+movw %D,(%A)
 
-leaw $WHILE
-jmp
-nop
-
-END:
