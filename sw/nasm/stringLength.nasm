@@ -28,29 +28,31 @@
 
 
 
-WHILE:
-leaw $8, %A
+leaw $7, %A
 movw %A, %D
-leaw $1, %A
-addw %D, (%A), %D
-movw %D, %A
-movw (%A), %D
-leaw $END
-je
-nop
+leaw $0,%A
+movw %D, (%A)
+; 7 na ram [0]
+WHILE:
 
-leaw $1, %A
+leaw $0,%A
 movw (%A), %D
 incw %D
-movw %D, (%A)
-
-leaw $0, %A
-movw (%A), %D
-incw %D
-movw %D, (%A)
-
+movw %D,(%A)
+; 7 incrementado na ram[0] e em D
+movw %D,%A
+movw (%A),%D
+; testar o que está posicionado na ram para D
 leaw $WHILE
-jmp
+jne
 nop
+leaw $0,%A
+movw (%A), %D
+leaw $8,%A
+subw %D, %A,%D
+leaw $0,%A
+movw %D, (%A)
 
-END:
+
+
+
