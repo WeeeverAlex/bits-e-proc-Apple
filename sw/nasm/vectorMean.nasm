@@ -19,3 +19,54 @@
 ; RAM[7]:  1  | RAM[7]:  1 |
 ; RAM[8]:  4  | RAM[8]:  4 -
 ; ------------------------------------
+
+PREPARANDO:
+leaw $4, %A 
+movw (%A), %D 
+leaw $4, %A
+addw %A, %D, %D
+leaw $3, %A
+movw %D, (%A)
+
+WHILE:
+leaw $3, %A
+movw (%A), %D 
+movw %D, %A 
+
+movw (%A), %D 
+leaw $1, %A 
+addw %D, (%A), %D
+movw %D, (%A)
+
+leaw $3, %A
+movw (%A), %D 
+decw %D 
+movw %D, (%A)
+
+leaw $3, %A 
+movw (%A), %D
+leaw $4, %A
+subw %D, %A, %D ; fiz D = R3 - R4, pra jmp
+leaw $WHILE
+jg  
+nop
+
+leaw $1, %A 
+movw (%A), %D 
+leaw $2, %A
+movw %D, (%A) ; R2 tem o total da soma tb 
+
+DIVISAO_MEDIA:
+leaw $0, %A 
+movw (%A), %D
+incw %D
+movw %D, (%A)
+leaw $2, %A 
+movw (%A), %D 
+leaw $4, %A 
+subw %D, (%A), %D 
+leaw $2, %A 
+movw %D, (%A)
+leaw $DIVISAO_MEDIA
+jg
+nop
