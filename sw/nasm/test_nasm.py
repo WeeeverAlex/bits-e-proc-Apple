@@ -156,14 +156,6 @@ def test_factorial():
     tst = {1: math.factorial(ram[0])}
     assert nasm_test("factorial.nasm", ram, tst, 10000)
 
-    ram = {0: 4}
-    tst = {1: math.factorial(ram[0])}
-    assert nasm_test("factorial.nasm", ram, tst, 10000)
-
-    ram = {0: 5}
-    tst = {1: math.factorial(ram[0])}
-    assert nasm_test("factorial.nasm", ram, tst, 10000)
-
 def test_matrizDeterminante():
     ram = {1000: 2, 1001: 1, 1003: 1, 1004: 2, 0: 3}
     tst = {0: 3}
@@ -188,5 +180,7 @@ def test_sweled():
     tst = {21185: 2, 21184: 508}
     assert nasm_test("SWeLED.nasm", ram, tst, 10000)
 
-
-
+def test_MultiploDeDois():
+    ram = {5: 4}
+    tst = {0: 1}
+    assert nasm_test("MultiploDeDois.nasm", ram, tst, 10000)
