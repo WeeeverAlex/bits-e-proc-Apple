@@ -136,7 +136,7 @@ def test_palindromo():
 def test_linha():
     ram = {}
     tst = {}
-    nasm_test("linha.nasm", ram, tst, 10000)
+    nasm_test("LCDlinha.nasm", ram, tst, 10000)
 
 
 def test_factorial():
@@ -144,11 +144,23 @@ def test_factorial():
     tst = {1: math.factorial(ram[0])}
     assert nasm_test("factorial.nasm", ram, tst, 10000)
 
-    ram = {1: 0}
+    ram = {0: 1}
     tst = {1: math.factorial(ram[0])}
     assert nasm_test("factorial.nasm", ram, tst, 10000)
 
-    ram = {1: 4}
+    ram = {0: 2}
+    tst = {1: math.factorial(ram[0])}
+    assert nasm_test("factorial.nasm", ram, tst, 10000)
+    
+    ram = {0: 3}
+    tst = {1: math.factorial(ram[0])}
+    assert nasm_test("factorial.nasm", ram, tst, 10000)
+
+    ram = {0: 4}
+    tst = {1: math.factorial(ram[0])}
+    assert nasm_test("factorial.nasm", ram, tst, 10000)
+
+    ram = {0: 5}
     tst = {1: math.factorial(ram[0])}
     assert nasm_test("factorial.nasm", ram, tst, 10000)
 
@@ -156,3 +168,25 @@ def test_matrizDeterminante():
     ram = {1000: 2, 1001: 1, 1003: 1, 1004: 2, 0: 3}
     tst = {0: 3}
     assert nasm_test("matrizDeterminante.nasm", ram, tst, 10000)
+
+def test_vectorMean():
+    ram = {4:4, 5:1, 6:2, 7:1, 8:8}
+    tst = {0:3, 1:12}
+    assert nasm_test("vectorMean.nasm", ram, tst, 10000)
+    
+
+def test_sweled():
+    ram = {21185: 14}
+    tst = {21185: 14, 21184: 496}
+    assert nasm_test("SWeLED.nasm", ram, tst, 10000)
+
+    ram = {21185: 6}
+    tst = {21185: 6, 21184: 504}
+    assert nasm_test("SWeLED.nasm", ram, tst, 10000)
+
+    ram = {21185: 2}
+    tst = {21185: 2, 21184: 508}
+    assert nasm_test("SWeLED.nasm", ram, tst, 10000)
+
+
+

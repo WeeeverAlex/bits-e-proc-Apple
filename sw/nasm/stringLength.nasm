@@ -25,3 +25,32 @@
 ;  RAM[13] = `z`
 ;  RAM[14] = `?`
 ;  RAM[15] = NULL = 0x0000
+
+
+
+WHILE:
+leaw $8, %A
+movw %A, %D
+leaw $1, %A
+addw %D, (%A), %D
+movw %D, %A
+movw (%A), %D
+leaw $END
+je
+nop
+
+leaw $1, %A
+movw (%A), %D
+incw %D
+movw %D, (%A)
+
+leaw $0, %A
+movw (%A), %D
+incw %D
+movw %D, (%A)
+
+leaw $WHILE
+jmp
+nop
+
+END:
