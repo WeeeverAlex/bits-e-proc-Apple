@@ -26,15 +26,33 @@
 ;  RAM[14] = `?`
 ;  RAM[15] = NULL = 0x0000
 
+
+
 leaw $7, %A
-WHILE:
-incw %A
-leaw %WHILE
-le
-nop
 movw %A, %D
-leaw $7, %A
-subw %D - %A,%D
-leaw $0, %A
+leaw $0,%A
+movw %D, (%A)
+; 7 na ram [0]
+WHILE:
+
+leaw $0,%A
+movw (%A), %D
+incw %D
 movw %D,(%A)
+; 7 incrementado na ram[0] e em D
+movw %D,%A
+movw (%A),%D
+; testar o que está posicionado na ram para D
+leaw $WHILE
+jne
+nop
+leaw $0,%A
+movw (%A), %D
+leaw $8,%A
+subw %D, %A,%D
+leaw $0,%A
+movw %D, (%A)
+
+
+
 
