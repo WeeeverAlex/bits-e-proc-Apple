@@ -18,6 +18,7 @@ WHILE:
     je
     nop
 
+
     leaw $1, %A ; soma
     movw (%A), %D
     leaw $3, %A
