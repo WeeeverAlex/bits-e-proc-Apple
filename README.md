@@ -8,7 +8,7 @@ Alexandre Wever
 <br>
 Enzo Quental
 <br>
-Leornardo Scarlatto
+Leornardo Scarlato
 <br>
 Tomás Alessi
 <br>
