@@ -136,7 +136,7 @@ def test_palindromo():
 def test_linha():
     ram = {}
     tst = {}
-    nasm_test("linha.nasm", ram, tst, 10000)
+    nasm_test("LCDlinha.nasm", ram, tst, 10000)
 
 
 def test_factorial():
