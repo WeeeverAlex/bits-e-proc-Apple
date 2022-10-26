@@ -32,6 +32,7 @@ WHILE:
     je
     nop
 
+
     leaw $1004, %A ; soma
     movw (%A), %D
     leaw $1, %A
@@ -44,6 +45,7 @@ WHILE:
     jmp
     nop
 
+
 END:
 
 WHILE2:
@@ -52,6 +54,7 @@ WHILE2:
     leaw $END2, %A
     je
     nop
+
 
     leaw $1003, %A 
     movw (%A), %D
@@ -64,6 +67,7 @@ WHILE2:
     leaw $WHILE2, %A
     jmp
     nop
+    
 
 END2:
 leaw $1, %A
