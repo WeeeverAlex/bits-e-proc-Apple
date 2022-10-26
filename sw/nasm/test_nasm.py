@@ -164,11 +164,15 @@ def test_factorial():
     tst = {1: math.factorial(ram[0])}
     assert nasm_test("factorial.nasm", ram, tst, 10000)
 
+def test_matrizDeterminante():
+    ram = {1000: 2, 1001: 1, 1003: 1, 1004: 2, 0: 3}
+    tst = {0: 3}
+    assert nasm_test("matrizDeterminante.nasm", ram, tst, 10000)
+
 def test_vectorMean():
     ram = {4:4, 5:1, 6:2, 7:1, 8:8}
     tst = {0:3, 1:12}
     assert nasm_test("vectorMean.nasm", ram, tst, 10000)
-
     
 
 def test_sweled():
@@ -183,5 +187,6 @@ def test_sweled():
     ram = {21185: 2}
     tst = {21185: 2, 21184: 508}
     assert nasm_test("SWeLED.nasm", ram, tst, 10000)
+
 
 
