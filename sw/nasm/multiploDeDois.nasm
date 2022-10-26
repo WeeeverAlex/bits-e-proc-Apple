@@ -7,3 +7,24 @@
 ; multiplo de dois, se for verdadeiro, salva 1
 ; em RAM[0] e 0 caso contrário.
 
+
+PREPARANDO:
+leaw $5, %A
+movw (%A), %D
+leaw $1, %A
+andw %D, %A, %D
+leaw $ELSE, %A
+je
+nop
+
+leaw $0, %A
+movw $0, (%A)
+leaw $END, %A
+jmp
+nop
+
+ELSE:
+    leaw $0, %A
+    movw $1, (%A)
+
+END:
