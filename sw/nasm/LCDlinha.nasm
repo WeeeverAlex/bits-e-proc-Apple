@@ -19,26 +19,23 @@ leaw $2, %A
 movw %D, (%A)
 
 WHILE:
-    leaw $1, %A
-    movw (%A), %D
-    leaw $18783, %A
-    subw %A, %D, %D
-    leaw $END, 
-    je
-    nop
+leaw $1, %A
+movw (%A), %D
+leaw $18783, %A
+subw %A, %D, %D
+leaw $END, 
+je
+nop
 
-    leaw $2, %A
-    movw (%A), %D
-
-    leaw $1, %A
-    movw %D, (%A)
-
-    movw (%A), %D
-    addw %D, $1, %D
-    movw %D, (%A)
-
-    leaw $WHILE, %A
-    jmp
-    nop
+leaw $2, %A
+movw (%A), %D
+leaw $1, %A
+movw %D, (%A)
+movw (%A), %D
+addw %D, $1, %D
+movw %D, (%A)
+leaw $WHILE, %A
+jmp
+nop
 
 END:
