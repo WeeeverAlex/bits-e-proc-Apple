@@ -1,3 +1,4 @@
+from re import A
 import sys
 
 
@@ -33,11 +34,25 @@ class Parser:
         entrada o método retorna "Falso", senão retorna "Verdadeiro".
         @return Verdadeiro se ainda há instruções, Falso se as instruções terminaram.
         """
+        
+        varrer = self.file.readline()
+        while varrer:
+            self.lineNumber += 1
+            self.currentLine = varrer
+            self.currentCommand = self.currentLine.split()
+            if self.currentCommand:
+                return True
+            varrer = self.file.readline()
+        return False
+
+
+
 
         # você deve varrer self.file (arquivo já aberto) até encontrar: fim de arquivo
         # ou uma nova instrucao
         # self.file
-        pass
+
+
 
     # TODO
     def commandType(self):
@@ -50,8 +65,12 @@ class Parser:
         @return o tipo da instrução.
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.currentCommand[0] == "leaw":
+            return self.CommandType["A"]
+        elif self.currentCommand[0][-1] == ":":
+            return self.CommandType["L"]
+        else:
+            return self.CommandType["C"]
 
 
     # TODO
@@ -63,8 +82,14 @@ class Parser:
         @return somente o símbolo ou o valor número da instrução.
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.commandType() == self.CommandType["A"]:
+            return self.currentCommand[1].split(",")[0][1:]
+        else:
+            return None
+
+
+
+
 
     # TODO
     def label(self):
@@ -75,8 +100,14 @@ class Parser:
         @return o símbolo da instrução (sem os dois pontos).
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.commandType() == self.CommandType["L"]:
+            return self.currentCommand[0][:-1]
+        else:
+            return None
+
+
+
+        
 
     # DONE
     def command(self):
