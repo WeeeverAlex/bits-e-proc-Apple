@@ -38,7 +38,6 @@ class Parser:
         # você deve varrer self.file (arquivo já aberto) até encontrar: fim de arquivo
         # ou uma nova instrucao
         texto = self.code
-        print(self.code)
         while len(texto) > self.lineNumber:
             self.currentCommand = []
             linhas = texto[self.lineNumber].strip()
