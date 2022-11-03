@@ -75,10 +75,8 @@ class Parser:
         @return o símbolo da instrução (sem os dois pontos).
         """
 
-        if self.commandType() == self.CommandType["L"]:
+        if self.currentCommand[0][-1] == ':':
             return self.currentCommand[0][:-1]
-        else:
-            return None
 
     # DONE
     def command(self):
