@@ -5,8 +5,9 @@ class Parser:
     # DONE
     def __init__(self, inputFile):
         self.file = inputFile  # self.openFile()  # arquivo de leitura
+        self.code = self.file.readlines()
         self.lineNumber = 0  # linha atual do arquivo (nao do codigo gerado)
-        self.currentCommand = ""  # comando atual
+        self.currentCommand = []  # comando atual
         self.currentLine = ""  # linha de codigo atual
         self.CommandType = {"A": "A_COMMAND", "C": "C_COMMAND", "L": "L_COMMAND"}
 
@@ -25,7 +26,7 @@ class Parser:
     def close(self):
         self.file.close()
 
-    # TODO
+    # DONE
     def advanced(self):
         """
         Carrega uma instrução e avança seu apontador interno para o próxima
@@ -36,8 +37,23 @@ class Parser:
 
         # você deve varrer self.file (arquivo já aberto) até encontrar: fim de arquivo
         # ou uma nova instrucao
-        # self.file
-        pass
+        texto = self.code
+        while len(texto) > self.lineNumber:
+            self.currentCommand = []
+            linhas = texto[self.lineNumber].strip()
+            linhas = linhas.split()
+            self.lineNumber += 1
+
+            for linha in linhas:
+                if linha == ';':
+                    break
+                else:
+                    self.currentCommand.append(linha.replace(",",""))
+
+            if self.currentCommand != []:
+                return True
+
+        return False
 
     # TODO
     def commandType(self):
@@ -50,8 +66,12 @@ class Parser:
         @return o tipo da instrução.
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.currentCommand[0] == "leaw":
+            return self.CommandType["A"]
+        elif self.currentCommand[0][-1] == ":":
+            return self.CommandType["L"]
+        else:
+            return self.CommandType["C"]
 
 
     # TODO
@@ -63,8 +83,8 @@ class Parser:
         @return somente o símbolo ou o valor número da instrução.
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.commandType() == self.CommandType["A"]:
+            return self.currentCommand[1].replace("$","")
 
     # TODO
     def label(self):
@@ -75,8 +95,8 @@ class Parser:
         @return o símbolo da instrução (sem os dois pontos).
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.commandType() == self.CommandType["L"]:
+            return self.currentCommand[0].replace(":","")
 
     # DONE
     def command(self):
