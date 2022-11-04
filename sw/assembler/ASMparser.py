@@ -63,8 +63,8 @@ class Parser:
         @return somente o símbolo ou o valor número da instrução.
         """
 
-        # analise o self.currentCommand
-        pass
+        if self.commandType() == self.CommandType["A"]:
+            return self.currentCommand[1].replace("$","")
 
     # TODO
     def label(self):
