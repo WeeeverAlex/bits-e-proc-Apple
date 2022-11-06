@@ -116,4 +116,9 @@ jobs:
         run: |
           pytest hw/test_seq.py -k add
 
+      - name: test parser
+        run: |
+          pytest sw/assembler/test_parser.py 
+
+
 
