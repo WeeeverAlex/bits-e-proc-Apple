@@ -118,7 +118,7 @@ jobs:
 
       - name: test parser
         run: |
-          pytest sw/assembler/test_asmparser.py 
+          pytest sw/assembler/test_asmparser.py -k advanced
 
 
 
