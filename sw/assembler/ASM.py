@@ -50,3 +50,5 @@ class ASM:
             elif self.parser.commandType() == "A_COMMAND":
                 bin = ""
                 self.hack.write(bin + "\n")
+
+                

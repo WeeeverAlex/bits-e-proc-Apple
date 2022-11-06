@@ -116,9 +116,10 @@ jobs:
         run: |
           pytest hw/test_seq.py -k add
 
-      - name: test parser
+      - name: teste advanced
         run: |
-          pytest sw/assembler/test_asmparser.py -k advanced
+          pytest sw/assembler/test_asmparser.py -k test_advanced
+          
 
 
 
