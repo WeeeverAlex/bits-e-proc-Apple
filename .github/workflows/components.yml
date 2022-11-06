@@ -150,5 +150,14 @@ jobs:
         run : |
           pytest sw/assembler/test_asmcode.py -k test_toBinary
 
+      - name: test addEntry
+        run : |
+          pytest sw/assembler/test_symboltable.py -k test_addEntry
 
+      - name: test contains
+        run : |
+          pytest sw/assembler/test_symboltable.py -k test_contains
 
+      - name: test getAddress
+        run : |
+          pytest sw/assembler/test_symboltable.py -k test_getAddress
