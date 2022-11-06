@@ -92,62 +92,61 @@ jobs:
         run: |
           pytest hw/test_ula.py -k test_inc
       
-      - name: teste ula
+      - name: test ula
         run: |
           pytest hw/test_ula.py -k test_ula
       
       # ------ SEQ -------
-      - name: teste dff
+      - name: test dff
         run: |
           pytest hw/test_seq.py -k test_dff
       
-      - name: teste binaryDigit
+      - name: test binaryDigit
         run: |
           pytest hw/test_seq.py -k test_binaryDigit
       
-      - name: teste register8
+      - name: test register8
         run: |
           pytest hw/test_seq.py -k test_register8
       
-      - name: teste registerN
+      - name: test registerN
         run: |
           pytest hw/test_seq.py -k test_registerN
       
-      - name: teste pc
+      - name: test pc
         run: |
           pytest hw/test_seq.py -k test_pc
       
-      - name: teste ram
+      - name: test ram
         run: |
           pytest hw/test_seq.py -k test_ram
-      # ------ ASSEMBLY -------
 
       # ------ ASSEMBLER -------
 
-      - name: teste advanced
+      - name: test advanced
         run: |
           pytest sw/assembler/test_asmparser.py -k test_advanced
-      - name: teste label
+      - name: test label
         run : |
           pytest sw/assembler/test_asmparser.py -k test_labol
-      - name: teste symbol
+      - name: test symbol
         run : |
           pytest sw/assembler/test_asmparser.py -k test_symbol
       
-      - name: teste CommandType
+      - name: test CommandType
         run : |
           pytest sw/assembler/test_asmparser.py -k test_commandType
-      - name: teste dest
+      - name: test dest
         run : |
           pytest sw/assembler/test_asmcode.py -k test_dest
-      - name: teste comp
+      - name: test comp
         run : |
           pytest sw/assembler/test_asmcode.py -k test_comp
         
-      - name: teste jump
+      - name: test jump
         run : |
           pytest sw/assembler/test_asmcode.py -k test_jump
-      - name: teste toBinary
+      - name: test toBinary
         run : |
           pytest sw/assembler/test_asmcode.py -k test_toBinary
 
