@@ -69,10 +69,7 @@ jobs:
         run: |
           pytest hw/test_components.py -k test_bin2bcd
       
-
-
-      # ----- ULA ------
-
+      # ----- ULA ----------------
       - name: test comparador
         run: |
           pytest hw/test_ula.py -k test_comparador
@@ -122,7 +119,6 @@ jobs:
           pytest hw/test_seq.py -k test_ram
 
       # ------ ASSEMBLER -------
-
       - name: test advanced
         run: |
           pytest sw/assembler/test_asmparser.py -k test_advanced
