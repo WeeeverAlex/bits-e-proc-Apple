@@ -118,7 +118,7 @@ jobs:
 
       - name: test parser
         run: |
-          pytest sw/assembler/test_ASMparser.py 
+          pytest sw/assembler/test_asmparser.py 
 
 
 
