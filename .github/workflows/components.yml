@@ -172,8 +172,4 @@ jobs:
       
       - name: test asm_hack
         run : |
-          pytest sw/assembler/test_asm.py -k test_asm_hack
-
-      
-
-      
+          pytest sw/assembler/test_asm.py -k test_asm_hack    
