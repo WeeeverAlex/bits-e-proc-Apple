@@ -157,3 +157,11 @@ jobs:
       - name: test getAddress
         run : |
           pytest sw/assembler/test_symboltable.py -k test_getAddress
+
+      -name: test fillSymbolTable
+        run : |
+          pytest sw/assembler/test_asm.py -k test_fillSymbolTable
+
+      
+
+      
