@@ -178,6 +178,6 @@ jobs:
         run : |
           pytest sw/assembler/test_asm.py -k test_asm_run
       
-      - name: test asm_hack
-        run : |
-          pytest sw/assembler/test_asm.py -k test_asm_hack
+      #- name: test asm_hack
+       # run : |
+        #  pytest sw/assembler/test_asm.py -k test_asm_hack
