@@ -31,6 +31,15 @@ class ASM:
 
         Dependencia : Parser, SymbolTable
         """
+        rom = 0
+        while self.parser.advanced():
+
+            if self.parser.commandType() == "L_COMMAND":
+                self.symbolTable.addEntry(self.parser.label(), rom)
+
+            else:
+                rom += 1
+
         self.parser.reset()
 
     # TODO

@@ -157,3 +157,23 @@ jobs:
       - name: test getAddress
         run : |
           pytest sw/assembler/test_symboltable.py -k test_getAddress
+
+      - name: test fillSymbolTable_labels
+        run : |
+          pytest sw/assembler/test_asm.py -k test_fillSymbolTtable_labels
+      
+      - name: test fillSymbolTable_address
+        run : |
+          pytest sw/assembler/test_asm.py -k test_fillsymboltable_address
+      
+      - name: test asm_run
+        run : |
+          pytest sw/assembler/test_asm.py -k test_asm_run
+      
+      - name: test asm_hack
+        run : |
+          pytest sw/assembler/test_asm.py -k test_asm_hack
+
+      
+
+      
