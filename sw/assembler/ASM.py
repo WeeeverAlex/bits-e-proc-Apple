@@ -54,10 +54,25 @@ class ASM:
 
         while self.parser.advanced():
             if self.parser.commandType() == "C_COMMAND":
-                bin = ""
-                self.hack.write(bin + "\n")
+                if self.parser.currentCommand[0] == "nop":
+                    bin = "0000000000000000"
+                else:
+                    bin = "111" + self.code.comp(self.parser.comp()) + self.code.dest(self.parser.dest()) + self.code.jump(self.parser.jump())
+                self.hack.write(bin)
+
             elif self.parser.commandType() == "A_COMMAND":
-                bin = ""
-                self.hack.write(bin + "\n")
+                if self.parser.symbol().isdigit():
+                    bin = "0" + self.toBinary(self.parser.symbol())
+                else:
+                    if self.symbolTable.contains(self.parser.symbol()):
+                        bin = "0" + self.toBinary(self.symbolTable.getAddress(self.parser.symbol()))
+                    else:
+                        self.symbolTable.addEntry(self.parser.symbol(), self.symbolTable.getNextAddress())
+                        bin = "0" + self.toBinary(self.symbolTable.getAddress(self.parser.symbol()))
+                self.hack.write(bin)
+
+    # DONE
+                
+                
 
                 
