@@ -71,6 +71,9 @@ class Code:
     def writeGoto(self, label):
         commands = []
         commands.append(self.writeHead("goto") + " " + label)
+        commands.append("leaw $" + label + ", %A")
+        commands.append("jmp")
+        commands.append("nop")
 
         # TODO ...
         self.commandsToFile(commands)
