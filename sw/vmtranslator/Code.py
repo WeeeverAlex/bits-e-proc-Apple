@@ -64,6 +64,7 @@ class Code:
         commands = []
         commands.append(self.writeHead("label") + " " + label)
 
+        commands.append(label + ":")
         # TODO ...
         self.commandsToFile(commands)
 
@@ -72,13 +73,27 @@ class Code:
         commands = []
         commands.append(self.writeHead("goto") + " " + label)
 
+        commands.append("leaw $" + label + ", %A")
+        commands.append("jmp")
+        commands.append("nop")
         # TODO ...
         self.commandsToFile(commands)
 
     # TODO
     def writeIf(self, label):
-        commands.append(self.writeHead("if") + " " + label)
         commands = []
+        commands.append(self.writeHead("if") + " " + label)
+
+        commands.append("leaw $SP, %A") 
+        commands.append("subw (%A), $1, %D")
+        commands.append('movw %D, (%A)')
+
+        commands.append('movw %D, %A')
+        commands.append('movw (%A), %D')
+        commands.append("notw %D") 
+
+        commands.append("leaw $" + label + ", %A")
+        commands.append('je')
 
         # TODO ...
         self.commandsToFile(commands)
