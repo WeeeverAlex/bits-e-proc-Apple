@@ -115,6 +115,7 @@ class Code:
 
         self.commandsToFile(commands)
 
+
     def writePop(self, command, segment, index):
         self.updateUniqLabel()
         commands = []
@@ -122,22 +123,141 @@ class Code:
 
         if segment == "" or segment == "constant":
             return False
-        elif segment == "local":
-            # dica: usar o argumento index (push local 1)
-            pass # TODO
-        elif segment == "argument":
-            pass # TODO
-        elif segment == "this":
-            pass # TODO
-        elif segment == "that":
-            pass # TODO
-        elif segment == "temp":
-            # dica: usar o argumento index (push temp 0)
-            pass # TODO
+        
         elif segment == "static":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $16, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
+        elif segment == "local":
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $32, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+             
+        elif segment == "argument":
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $BR, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
+        elif segment == "this":
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $1024, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
+        elif segment == "that":
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $1024, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
+        elif segment == "temp":
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $5, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "pointer":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')
+            commands.append('movw (%A), %D')
+            commands.append('leaw $3, %A')
+            variavel = 0 
+            while variavel<index:
+                commands.append('incw %A')
+                variavel += 1
+            commands.append('movw %D, (%A)')
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') 
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
 
         self.commandsToFile(commands)
 
