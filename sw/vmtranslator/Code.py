@@ -87,15 +87,12 @@ class Code:
         commands.append("leaw $SP, %A") 
         commands.append("subw (%A), $1, %D")
         commands.append('movw %D, (%A)')
-
         commands.append('movw %D, %A')
         commands.append('movw (%A), %D')
         commands.append("notw %D") 
-
         commands.append("leaw $" + label + ", %A")
         commands.append('je')
-
-        # TODO ...
+        
         self.commandsToFile(commands)
 
     # TODO
