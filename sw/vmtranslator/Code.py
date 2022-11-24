@@ -65,6 +65,7 @@ class Code:
         commands.append(self.writeHead("label") + " " + label)
 
         # TODO ...
+        commands.append(label + ":")
         self.commandsToFile(commands)
 
     # TODO
