@@ -146,25 +146,180 @@ class Code:
         commands.append(self.writeHead(command + " " + segment + " " + str(index)))
 
         if segment == "constant":
-            # dica: usar index para saber o valor da consante
-            # push constant index
-            pass # TODO
+            
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = A = index
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # RAM[256] = D
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)") 
+
         elif segment == "local":
-            pass # TODO
+
+            # LOCAL = RAM[1]    
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = index
+            commands.append("leaw $1, %A")              # A = 1
+            commands.append("movw (%A), %A")            # A = RAM[1]
+            commands.append("addw %A, %D, %D")          # D = RAM[1] + index
+            commands.append("movw %D, %A")              # A = RAM[1] + index
+            commands.append("movw (%A), %D")            # D = RAM[RAM[1] + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # RAM[256] = D
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257 
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = D -> RAM[0] = 257
+
         elif segment == "argument":
-            pass # TODO
+
+            # ARGUMENT = RAM[2]    
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = index
+            commands.append("leaw $2, %A")              # A = 2
+            commands.append("movw (%A), %A")            # A = RAM[2]
+            commands.append("addw %A, %D, %D")          # D = RAM[2] + index
+            commands.append("movw %D, %A")              # A = RAM[2] + index
+            commands.append("movw (%A), %D")            # D = RAM[RAM[2] + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # RAM[256] = D
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257 
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = D -> RAM[0] = 257
+
         elif segment == "this":
-            pass # TODO
+
+            # THIS = RAM[3]    
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = index
+            commands.append("leaw $3, %A")              # A = 3
+            commands.append("movw (%A), %A")            # A = RAM[3]
+            commands.append("addw %A, %D, %D")          # D = RAM[3] + index
+            commands.append("movw %D, %A")              # A = RAM[3] + index
+            commands.append("movw (%A), %D")            # D = RAM[RAM[3] + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # RAM[256] = D
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257 
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = D -> RAM[0] = 257
+
         elif segment == "that":
-            pass # TODO
-        elif segment == "argument":
-            pass # TODO
+
+            # THAT = RAM[4]    
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = index
+            commands.append("leaw $4, %A")              # A = 4
+            commands.append("movw (%A), %A")            # A = RAM[4]
+            commands.append("addw %A, %D, %D")          # D = RAM[4] + index
+            commands.append("movw %D, %A")              # A = RAM[4] + index
+            commands.append("movw (%A), %D")            # D = RAM[RAM[4] + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # RAM[256] = D
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257 
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = D -> RAM[0] = 257
+        
         elif segment == "static":
-            pass # TODO
+
+            # STATIC = RAM[16]    
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = A = index
+            commands.append("leaw $16, %A")             # A = 16
+            commands.append("addw %A, %D, %D")          # D = 16 + index
+            commands.append("movw %D, %A")              # A = 16 + index
+            commands.append("movw (%A), %D")            # D = RAM[16 + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # D = RAM[256]
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = 257
+
         elif segment == "temp":
-            pass # TODO
+
+            # TEMP = RAM[5]
+
+            commands.append(f"leaw ${index}, %A")       # A = index
+            commands.append("movw %A, %D")              # D = A = index
+            commands.append("leaw $5, %A")              # A = 5
+            commands.append("addw %A, %D, %D")          # D = 5 + index
+            commands.append("movw %D, %A")              # A = 5 + index
+            commands.append("movw (%A), %D")            # D = RAM[5 + index]
+
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw (%A), %A")            # A = RAM[0] = 256
+            commands.append("movw %D, (%A)")            # D = RAM[256]
+            commands.append("incw %A")                  # A = 257
+            commands.append("movw %A, %D")              # D = 257
+            
+            commands.append("leaw $SP, %A")             # A = SP
+            commands.append("movw %D, (%A)")            # RAM[0] = 257
+           
         elif segment == "pointer":
-            pass # TODO
+            
+            # se o pointer for 0 -> this
+            # se o pointer for 1 -> that
+
+            if index == 0:
+
+                # THIS = RAM[3]
+
+                commands.append('leaw $3, %A')          # A = 3
+                commands.append('movw (%A), %D')        # D = RAM[3]
+
+                commands.append('leaw $SP, %A')         # A = SP
+                commands.append('movw (%A), %A')        # A = RAM[0] = 256
+                commands.append('movw %D, (%A)')        # D = RAM[256]
+                commands.append('incw %A')              # A = 257
+                commands.append('movw %A, %D')          # D = 257
+
+                commands.append('leaw $SP, %A')         # A = SP
+                commands.append('movw %D, (%A)')        # RAM[0] = 257
+
+            elif index == 1:
+
+                # THAT = RAM[4]
+
+                commands.append('leaw $4, %A')          # A = 4
+                commands.append('movw (%A), %D')        # D = RAM[4]
+
+                commands.append('leaw $SP, %A')         # A = SP
+                commands.append('movw (%A), %A')        # A = RAM[0] = 256
+                commands.append('movw %D, (%A)')        # D = RAM[256]
+                commands.append('incw %A')              # A = 257
+                commands.append('movw %A, %D')          # D = 257
+
+                commands.append('leaw $SP, %A')         # A = SP
+                commands.append('movw %D, (%A)')        # RAM[0] = 257
+
+
 
         self.commandsToFile(commands)
 
