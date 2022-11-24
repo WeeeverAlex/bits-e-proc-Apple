@@ -160,7 +160,7 @@ class Code:
 
         elif segment == "local":
 
-            # LCL = RAM[1]    
+            # LOCAL = RAM[1]    
 
             commands.append(f"leaw ${index}, %A")       # A = index
             commands.append("movw %A, %D")              # D = index
@@ -181,7 +181,7 @@ class Code:
 
         elif segment == "argument":
 
-            # ARG = RAM[2]    
+            # ARGUMENT = RAM[2]    
 
             commands.append(f"leaw ${index}, %A")       # A = index
             commands.append("movw %A, %D")              # D = index
@@ -264,7 +264,7 @@ class Code:
 
         elif segment == "temp":
 
-            # STATIC = RAM[5]
+            # TEMP = RAM[5]
 
             commands.append(f"leaw ${index}, %A")       # A = index
             commands.append("movw %A, %D")              # D = A = index
