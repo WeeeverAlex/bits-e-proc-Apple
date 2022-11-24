@@ -92,26 +92,242 @@ class Code:
         commands.append(self.writeHead(command))
 
         if command == "add":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 258 
+            commands.append("decw %A")   # A = 257
+            commands.append("movw (%A), %D")  # D ta com y
+            commands.append("decw %A")   # A = 256
+            commands.append("addw (%A), %D, %D") # (A) ta com x, x+y em D
+            commands.append("movw %D, (%A)") 
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
+
         elif command == "sub":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 258 
+            commands.append("decw %A")   # A = 257
+            commands.append("movw (%A), %D")  # D ta com y
+            commands.append("decw %A")   # A = 256
+            commands.append("subw (%A), %D, %D") # (A) ta com x, x+y em D
+            commands.append("movw %D, (%A)") 
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+        
         elif command == "or":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 258 
+            commands.append("decw %A")   # A = 257
+            commands.append("movw (%A), %D")  # D ta com y
+            commands.append("decw %A")   # A = 256
+            commands.append("orw (%A), %D, %D") # (A) ta com x, xory em D
+            commands.append("movw %D, (%A)") 
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+            
         elif command == "and":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 258 
+            commands.append("decw %A")   # A = 257
+            commands.append("movw (%A), %D")  # D ta com y
+            commands.append("decw %A")   # A = 256
+            commands.append("andw (%A), %D, %D") # (A) ta com x, xory em D
+            commands.append("movw %D, (%A)") 
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+            
+            
+
         elif command == "not":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 257
+            commands.append("decw %A")   # A = 256
+            commands.append("movw (%A), %D")  # D ta com x
+            commands.append("notw, %D, %D") # D ta x not 
+            commands.append("movw %D, (%A)")  # D em 256
+            commands.append("incw %A")   
+            commands.append("movw %A, %D")  # 
+            commands.append("leaw $SP ,%A")   
+            commands.append("movw %D, (%A)")  # 
+        
+        
+        
         elif command == "neg":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")  # A ta com 257
+            commands.append("decw %A")   # A = 256
+            commands.append("movw (%A), %D")  # D ta com x
+            commands.append("negw, %D, %D") # D ta x not 
+            commands.append("movw %D, (%A)")  # D em 256
+            commands.append("incw %A")   
+            commands.append("movw %A, %D")  # 
+            commands.append("leaw $SP ,%A")   
+            commands.append("movw %D, (%A)")  # 
+        
         elif command == "eq":
             # dica, usar self.getUniqLabel() para obter um label único
+
+            zerou = self.getUniqLabel()
+            self.updateUniqLabel()
+            fim = self.getUniqLabel()
+
+            commands.append("leaw $SP, %A")   
+            commands.append("movw (%A), %A")  # A = 258 
+            
+            commands.append("decw %A")   # A= 257
+            commands.append("movw (%A), %D")   # D TA C Y
+            commands.append("decw %A")  # A= 256
+            commands.append("subw (%A), %D, %D")   # D TA C X-Y
+
+            commands.append(f"leaw ${zerou}, %A")     
+            commands.append("je")  
+            commands.append("nop")  
+            
+            commands.append("leaw $0, %A")  
+            commands.append("movw %A, %D") 
+            
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)")      
+
+            commands.append(f"leaw ${fim}, %A")     
+            commands.append("jmp")  
+            commands.append("nop")       
+            
+            
+            commands.append(f"{zerou}:")  
+            
+            commands.append("leaw $65535, %A")  
+            commands.append("movw %A, %D") 
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)") 
+
+            commands.append(f"{fim}:")  
+            commands.append("leaw $SP, %A")  
+            commands.append("movw (%A), %D") 
+            commands.append("decw %D") 
+            commands.append("movw %D, (%A)") 
+        
+
+
+            
+
+
+
             pass # TODO
         elif command == "gt":
-            # dica, usar self.getUniqLabel() para obter um label único
-            pass # TODO
+
+            pozi = self.getUniqLabel()
+            self.updateUniqLabel()
+            fim= self.getUniqLabel()
+
+            commands.append("leaw $SP, %A")   
+            commands.append("movw (%A), %A")  # A = 258 
+            
+            commands.append("decw %A")   # A= 257
+            commands.append("movw (%A), %D")   # D TA C Y
+            commands.append("decw %A")  # A= 256
+            commands.append("subw (%A), %D, %D")   # D TA C X-Y
+
+            commands.append(f"leaw ${pozi}, %A")     
+            commands.append("jg")  
+            commands.append("nop")  
+            
+            commands.append("leaw $0, %A")  
+            commands.append("movw %A, %D") 
+            
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)")      
+
+            commands.append(f"leaw ${fim}, %A")     
+            commands.append("jmp")  
+            commands.append("nop")       
+            
+            
+            commands.append(f"{pozi}:")  
+            
+            commands.append("leaw $65535, %A")  
+            commands.append("movw %A, %D") 
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)") 
+
+            commands.append(f"{fim}:")  
+            commands.append("leaw $SP, %A")  
+            commands.append("movw (%A), %D") 
+            commands.append("decw %D") 
+            commands.append("movw %D, (%A)") 
+        
+
+
+            self.commandsToFile(commands)
+
         elif command == "lt":
             # dica, usar self.getUniqLabel() para obter um label único
-            pass # TODO
+            neg = self.getUniqLabel()
+            self.updateUniqLabel()
+            fim= self.getUniqLabel()
+
+            commands.append("leaw $SP, %A")   
+            commands.append("movw (%A), %A")  # A = 258 
+            
+            commands.append("decw %A")   # A= 257
+            commands.append("movw (%A), %D")   # D TA C Y
+            commands.append("decw %A")  # A= 256
+            commands.append("subw (%A), %D, %D")   # D TA C X-Y
+
+            commands.append(f"leaw ${neg}, %A")     
+            commands.append("jl")  
+            commands.append("nop")  
+            
+            commands.append("leaw $0, %A")  
+            commands.append("movw %A, %D") 
+            
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)")      
+
+            commands.append(f"leaw ${fim}, %A")     
+            commands.append("jmp")  
+            commands.append("nop")       
+            
+            
+            commands.append(f"{neg}:")  
+            
+            commands.append("leaw $65535, %A")  
+            commands.append("movw %A, %D") 
+            commands.append("leaw $SP, %A") 
+            commands.append('movw (%A), %A')
+            commands.append("decw %A") 
+            commands.append("decw %A") 
+            commands.append("movw %D, (%A)") 
+
+            commands.append(f"{fim}:")  
+            commands.append("leaw $SP, %A")  
+            commands.append("movw (%A), %D") 
+            commands.append("decw %D") 
+            commands.append("movw %D, (%A)") 
+        
 
         self.commandsToFile(commands)
 
