@@ -116,10 +116,10 @@ class Code:
         self.commandsToFile(commands)
 
 
-    def writePop(self, command, segment, idx):
+    def writePop(self, command, segment, index):
         self.updateUniqLabel()
         commands = []
-        commands.append(self.writeHead(command) + " " + segment + " " + str(idx))
+        commands.append(self.writeHead(command) + " " + segment + " " + str(index))
 
         if segment == "" or segment == "constant":
             return False
@@ -134,7 +134,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $16, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -153,7 +153,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $32, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -172,7 +172,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $BR, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -191,7 +191,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $1024, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -210,7 +210,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $1024, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -229,7 +229,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $5, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -248,7 +248,7 @@ class Code:
             commands.append('movw (%A), %D')
             commands.append('leaw $3, %A')
             variavel = 0 
-            while variavel<idx:
+            while variavel<index:
                 commands.append('incw %A')
                 variavel += 1
             commands.append('movw %D, (%A)')
@@ -261,13 +261,13 @@ class Code:
 
         self.commandsToFile(commands)
 
-    def writePush(self, command, segment, idx):
+    def writePush(self, command, segment, index):
         commands = []
-        commands.append(self.writeHead(command + " " + segment + " " + str(idx)))
+        commands.append(self.writeHead(command + " " + segment + " " + str(index)))
 
         if segment == "constant":
-            # dica: usar idx para saber o valor da consante
-            # push constant idx
+            # dica: usar index para saber o valor da consante
+            # push constant index
             pass # TODO
         elif segment == "local":
             pass # TODO
