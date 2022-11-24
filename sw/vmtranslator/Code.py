@@ -99,7 +99,7 @@ class Code:
         
         self.commandsToFile(commands)
 
-    # TODO
+     # TODO
     def writeArithmetic(self, command):
         self.updateUniqLabel()
         if len(command) < 2:
@@ -294,7 +294,7 @@ class Code:
         
 
 
-            self.commandsToFile(commands)
+
 
         elif command == "lt":
             # dica, usar self.getUniqLabel() para obter um label único
